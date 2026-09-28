@@ -1,12 +1,7 @@
 import React from 'react';
+import { useCartStore } from 'cart/store';
 
-export interface Product {
-    id: number;
-    name: string;
-    price: number;
-}
-
-const dummyProducts: Product[] = [
+const dummyProducts = [
     { id: 1, name: 'Wireless Headphones', price: 99 },
     { id: 2, name: 'Mechanical Keyboard', price: 149 },
     { id: 3, name: 'Gaming Mouse', price: 59 },
@@ -14,8 +9,10 @@ const dummyProducts: Product[] = [
 ];
 
 export default function ProductsList() {
-    const handleAddToCart = (product: Product) => {
-        window.dispatchEvent(new CustomEvent<Product>('ADD_TO_CART', { detail: product }));
+    const addToCart = useCartStore((state: any) => state.addToCart);
+
+    const handleAddToCart = (product: any) => {
+        addToCart(product);
         alert(`${product.name} added to cart!`);
     };
 
@@ -33,7 +30,7 @@ export default function ProductsList() {
                             onClick={() => handleAddToCart(product)}
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition"
                         >
-                            Add to Cart
+                            Add
                         </button>
                     </div>
                 ))}

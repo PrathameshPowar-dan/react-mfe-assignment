@@ -3,6 +3,7 @@ export const mfConfig = {
   filename: "remoteEntry.js",
   exposes: {
     "./CartList": "./src/CartList.tsx",
+    "./store": "./src/store.ts",
   },
-  shared: ["react", "react-dom"],
+  shared: ["react", "react-dom", "zustand"],
 };
