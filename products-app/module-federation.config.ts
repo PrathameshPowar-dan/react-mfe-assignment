@@ -1,5 +1,5 @@
 export const mfConfig = {
-  name: "products_app",
+  name: "products",
   filename: "remoteEntry.js",
   exposes: {
     "./ProductsList": "./src/ProductsList.tsx",

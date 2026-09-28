@@ -1,6 +1,12 @@
 import React from 'react';
 
-const dummyProducts = [
+export interface Product {
+    id: number;
+    name: string;
+    price: number;
+}
+
+const dummyProducts: Product[] = [
     { id: 1, name: 'Wireless Headphones', price: 99 },
     { id: 2, name: 'Mechanical Keyboard', price: 149 },
     { id: 3, name: 'Gaming Mouse', price: 59 },
@@ -8,9 +14,8 @@ const dummyProducts = [
 ];
 
 export default function ProductsList() {
-    const handleAddToCart = (product) => {
-        // Fires a global window event to send the product data to the Cart app
-        window.dispatchEvent(new CustomEvent('ADD_TO_CART', { detail: product }));
+    const handleAddToCart = (product: Product) => {
+        window.dispatchEvent(new CustomEvent<Product>('ADD_TO_CART', { detail: product }));
         alert(`${product.name} added to cart!`);
     };
 

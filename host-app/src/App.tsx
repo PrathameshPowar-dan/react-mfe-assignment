@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-// Dynamically import the exposed components from the remote apps
 const ProductsList = React.lazy(() => import('products/ProductsList'));
 const CartList = React.lazy(() => import('cart/CartList'));
 
